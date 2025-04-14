@@ -21,7 +21,6 @@ const ItemSchema = new mongoose.Schema({
   runValidators: true
 });
 
-// Optional: Add a text index for better search
 ItemSchema.index({ name: 'text', description: 'text' });
 
 const Item = mongoose.model('Item', ItemSchema);

@@ -3,16 +3,16 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-const Item = require('./Item');  // Make sure this path is correct
+const Item = require('./Item');  
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// MongoDB Connection
+// mongo db
 const connectDB = async () => {
   try {
     await mongoose.connect('mongodb://127.0.0.1:27017/homework', {
-      // Removed deprecated options
+
     });
     console.log('MongoDB connected successfully');
   } catch (err) {
@@ -128,14 +128,3 @@ const startServer = async () => {
 
 startServer();
 
-// Optional: Handle process termination
-process.on('SIGINT', async () => {
-  try {
-    await mongoose.connection.close();
-    console.log('MongoDB connection closed');
-    process.exit(0);
-  } catch (err) {
-    console.error(err);
-    process.exit(1);
-  }
-});

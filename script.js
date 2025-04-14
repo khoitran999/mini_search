@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchForm = document.getElementById('searchForm');
     const itemList = document.getElementById('itemList');
   
-    // Handle item creation
+    // create stuff
     createItemForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
@@ -22,17 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const result = await response.json();
   
         if (result.success) {
-          // Clear form
+          // Clear
           createItemForm.reset();
           
-          // Show success message
           alert(result.message);
           
-          // Optionally refresh the item list
           document.getElementById('searchQuery').value = '';
           await searchItems();
         } else {
-          // Handle error
           alert(result.error || 'Failed to create item');
         }
       } catch (error) {
@@ -41,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   
-    // Search function to be used by both form submit and initial load
+    // Search function 
     async function searchItems(query = '') {
       try {
         const response = await fetch(`/search-items?query=${encodeURIComponent(query)}`);
@@ -77,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   
-    // Handle item search
     searchForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
@@ -85,6 +81,5 @@ document.addEventListener('DOMContentLoaded', () => {
       await searchItems(query);
     });
   
-    // Initial load of items
     searchItems();
   });
