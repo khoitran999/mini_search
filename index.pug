@@ -1,0 +1,57 @@
+doctype html
+html(lang="en")
+  head
+    title Homework App
+    style.
+      body { 
+        font-family: Arial, sans-serif; 
+        max-width: 800px; 
+        margin: 0 auto; 
+        padding: 20px; 
+      }
+      form { 
+        background: #f4f4f4; 
+        padding: 20px; 
+        border-radius: 5px; 
+        margin-bottom: 20px; 
+      }
+      input, textarea { 
+        width: 100%; 
+        margin-bottom: 10px; 
+        padding: 10px; 
+        box-sizing: border-box;
+      }
+      #results { 
+        border-top: 1px solid #ddd; 
+        padding-top: 20px; 
+      }
+      .item {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+  body
+    h1 Homework Application
+
+    // Create Item Form
+    form#createItemForm
+      h2 Create New Item
+      input#name(type="text" name="name" placeholder="Item Name" required)
+      textarea#description(name="description" placeholder="Item Description")
+      button(type="submit") Create Item
+
+    // Search Form
+    form#searchForm
+      h2 Search Items
+      input#searchQuery(type="text" name="query" placeholder="Search items...")
+      button(type="submit") Search
+
+    // Results Area
+    #results
+      h2 Results
+      #itemList
+
+    // Include client-side script
+    script(src="/script.js")
